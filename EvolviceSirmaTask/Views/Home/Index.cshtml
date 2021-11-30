@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<link href="~/Scripts/Datatables/datatables.css" rel="stylesheet" />
+<link href="~/Scripts/Datatables/datatables.min.css" rel="stylesheet" />
+<style>
+    .custom-file-upload {
+        border: 1px solid #ccc;
+        display: inline-block;
+        padding: 6px 12px;
+        cursor: pointer;
+    }
+</style>
+<div class="jumbotron">
+    <div class="row form-group">
+
+        <h2>please choose valid text file</h2>
+    </div>
+    @using (Html.BeginForm("Calculate",
+                        "Home",
+                        FormMethod.Post,
+                        new { enctype = "multipart/form-data", id = "EmployeesFileForm" }))
+    {
+        <div class="row">
+            <div class="col-md-4 form-group">
+
+                <input type="file" name="EmployeesFile" class="custom-file-upload" id="EmployeesFile" accept=".txt" data-default-file="">
+            </div>
+        </div>
+    }
+
+</div>
+
+<div class="row">
+    @Html.Partial("_EmployeesGrid")
+</div>
